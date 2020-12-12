@@ -32,7 +32,39 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+        "arrow-parens": 0,
+        "generator-star-spacing": 0,
+        "no-debugger": "off",
+        "no-console": "error",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "space-before-function-paren": 0,
+        "eol-last": 0,
+        "no-useless-escape": "off",
+        "max-len": [
+            2,
+            200,
+            4,
+            {
+                "ignoreUrls": true
+            }
+        ],
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": false
+            }
+        ],
+        "guard-for-in": "error"
+    }
   },
   "browserslist": [
     "> 1%",
