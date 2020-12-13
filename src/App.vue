@@ -1,4 +1,5 @@
 <template>
+<main>
     <div class="container">
         <h1>待办事项！</h1>
         <div class="input-add">
@@ -20,8 +21,16 @@
                     <span class="check-button"></span>
                 </label>
             </div>
+            <div class="todo-item">
+                <label>
+                    <input type="checkbox" />
+                    Todo 2
+                    <span class="check-button"></span>
+                </label>
+            </div>
         </div>
     </div>
+</main>
 </template>
 
 <script>
@@ -51,7 +60,6 @@ main {
 }
 
 .container {
-    margin: auto;
     width: 60%;
     max-width: 400px;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
