@@ -2,13 +2,14 @@
 <main>
     <div class="container">
         <h1>待办事项！</h1>
-        <todo-add></todo-add>
-        <todo-filter></todo-filter>
-        <todo-list></todo-list>
+        <todo-add :tid="todos.length" @add-todo="addTodo"></todo-add>
+        <todo-filter :selected="filter" @change-filter="filter = $event"></todo-filter>
+        <todo-list :todos="filteredTodos"></todo-list>
     </div>
 </main>
 </template>
 <script>
+import { computed, ref } from 'vue';
 import TodoAdd from './components/TodoAdd';
 import TodoFilter from './components/TodoFilter';
 import TodoList from './components/TodoList';
@@ -18,7 +19,30 @@ export default {
         TodoFilter,
         TodoList
     },
-    name: 'App'
+    name: 'App',
+    setup() {
+        const todos = ref([]);
+        const addTodo = (todo) => todos.value.push(todo);
+
+        const filter = ref('all');
+        const filteredTodos = computed(() => {
+            switch (filter.value) {
+            case 'done':
+                return todos.value.filter(todo => todo.completed);
+            case 'todo':
+                return todos.value.filter(todo => !todo.completed);
+            default:
+                return todos.value;
+            }
+        });
+
+        return {
+            todos,
+            addTodo,
+            filter,
+            filteredTodos
+        };
+    }
 };
 </script>
 

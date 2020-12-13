@@ -1,14 +1,21 @@
 <template>
     <div class="todo-list">
-        <todo-list-item></todo-list-item>
+        <todo-list-item 
+        v-for="todo in todos" 
+        :key="todo.id"
+        :todo-item="todo"
+        @change-state="todo.completed = $event.target.checked"
+        ></todo-list-item>
     </div>
 </template>
 <script>
 import TodoListItem from './TodoListItem';
 export default {
+    name: 'TodoList',
     components: {
         TodoListItem
-    }
+    },
+    props: ['todos']
 };
 </script>
 <style>
