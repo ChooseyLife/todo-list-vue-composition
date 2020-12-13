@@ -77,6 +77,7 @@ h1 {
 .input-add {
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 .input-add input {
@@ -85,6 +86,7 @@ h1 {
     border: none;
     outline: none;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.08);
+    width: 100%;
     font-size: 16px;
     color: #626262;
 }
@@ -106,6 +108,7 @@ h1 {
     display: block;
     width: 100%;
     height: 100%;
+    /* linear-gradient 设置背景色 + */
     background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
     background-size: 50% 2px, 2px 50%;
     background-position: center;
