@@ -13,6 +13,8 @@ import { computed, ref } from 'vue';
 import TodoAdd from './components/TodoAdd';
 import TodoFilter from './components/TodoFilter';
 import TodoList from './components/TodoList';
+import useTodos from '@/composables/useTodo.js';
+
 export default {
     components: {
         TodoAdd,
@@ -21,8 +23,7 @@ export default {
     },
     name: 'App',
     setup() {
-        const todos = ref([]);
-        const addTodo = (todo) => todos.value.push(todo);
+        const {todos, addTodo} = useTodos();
 
         const filter = ref('all');
         const filteredTodos = computed(() => {
