@@ -9,11 +9,11 @@
 </main>
 </template>
 <script>
-import { computed, ref } from 'vue';
 import TodoAdd from './components/TodoAdd';
 import TodoFilter from './components/TodoFilter';
 import TodoList from './components/TodoList';
 import useTodos from '@/composables/useTodo.js';
+import useFilteredTodos from '@/composables/useFilteredTodos.js';
 
 export default {
     components: {
@@ -24,18 +24,7 @@ export default {
     name: 'App',
     setup() {
         const {todos, addTodo} = useTodos();
-
-        const filter = ref('all');
-        const filteredTodos = computed(() => {
-            switch (filter.value) {
-            case 'done':
-                return todos.value.filter(todo => todo.completed);
-            case 'todo':
-                return todos.value.filter(todo => !todo.completed);
-            default:
-                return todos.value;
-            }
-        });
+        const {filter, filteredTodos} = useFilteredTodos(todos);
 
         return {
             todos,
