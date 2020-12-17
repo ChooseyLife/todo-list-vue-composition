@@ -11,23 +11,27 @@ import { ref } from 'vue';
 export default {
     name: 'TodoAdd',
     setup(props, context) {
-        const todoContent = ref('');
-        const emitAddTodo = () => {
-            if (!todoContent.value) return;
-            const todo = {
-                id: props.tid,
-                content: todoContent.value,
-                completed: false
-            };
-            context.emit('add-todo', todo);
-            todoContent.value = '';
-        };
-        return {
-            todoContent,
-            emitAddTodo
-        };
+        return useEmitAddTodo(props.tid, context.emit);
     }
 };
+
+function useEmitAddTodo(tid, emit) {
+    const todoContent = ref('');
+    const emitAddTodo = () => {
+        if (!todoContent.value) return;
+        const todo = {
+            id: tid,
+            content: todoContent.value,
+            completed: false
+        };
+        emit('add-todo', todo);
+        todoContent.value = '';
+    };
+    return {
+        todoContent,
+        emitAddTodo
+    };
+}
 </script>
 <style>
 /* 添加框 */
