@@ -1,6 +1,6 @@
 <template>
     <div class="input-add">
-        <input type="text" name="todo" v-model="todoContent" @keyup.enter="emitAddTodo"/>
+        <input type="text" placeholder="获取焦点" name="todo" v-model="todoContent" @keyup.enter="emitAddTodo"/>
         <button @click="emitAddTodo">
         <i class="plus"></i>
         </button>
